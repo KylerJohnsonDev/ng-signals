@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from 'src/app/components/button.component';
 import { PokemonDetailComponent } from 'src/app/components/pokemon-detail.component';
 import { PokemonStoreService } from './pokemon-store.service';
@@ -7,7 +8,7 @@ import { PokemonStoreService } from './pokemon-store.service';
 @Component({
   selector: 'app-pokemon',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, PokemonDetailComponent],
+  imports: [CommonModule, ButtonComponent, PokemonDetailComponent, FormsModule],
   providers: [PokemonStoreService],
   template: `
     <app-pokemon-detail
@@ -30,13 +31,32 @@ import { PokemonStoreService } from './pokemon-store.service';
         "
       >
       </app-button>
-      <app-button
-        text="Reset"
-        (click)="pokemonStore.setPokemonNumber(1)"
-      ></app-button>
+      <app-button text="Reset" (click)="reset()"></app-button>
+    </section>
+    <section class="w-72 gap-2 flex flex-row m-4 items-baseline">
+      <span class="w-16 text-lg">Go to:</span>
+      <input
+        class="app-input"
+        type="number"
+        [(ngModel)]="formNumber"
+        (ngModelChange)="formChange($event)"
+      />
     </section>
   `,
 })
 export class PokemonComponent {
-  constructor(public pokemonStore: PokemonStoreService) {}
+  formNumber!: number;
+  constructor(public pokemonStore: PokemonStoreService) {
+    this.formNumber = pokemonStore.pokemonNumber();
+  }
+
+  formChange(inputValue: any): void {
+    const num = Number(inputValue);
+    this.pokemonStore.setPokemonNumber(num);
+  }
+
+  reset(): void {
+    this.pokemonStore.setPokemonNumber(1);
+    this.formNumber = 1;
+  }
 }
