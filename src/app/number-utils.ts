@@ -22,16 +22,18 @@ export function formatMessage(
   messageType: MessageTypes,
   count: number
 ): string {
+  const date = new Date();
+  const dateString = date.toLocaleDateString();
   const timeString = new Date().toLocaleTimeString();
   switch (messageType) {
     case MessageTypes.increment:
-      return `${timeString} - Increment count to ${count}`;
+      return `${dateString} ${timeString} - Increment count to ${count}`;
     case MessageTypes.decrement:
-      return `${timeString} - Decrement count to ${count}`;
+      return `${dateString} ${timeString} - Decrement count to ${count}`;
     case MessageTypes.reset:
-      return `${timeString} - reset count to 0`;
+      return `${dateString} ${timeString} - reset count to 0`;
     default:
-      return `${timeString} - Unknown action performed`;
+      return `${dateString} ${timeString} - Unknown action performed`;
   }
 }
 

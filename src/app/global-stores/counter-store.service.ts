@@ -6,7 +6,9 @@ import {
   MessageTypes,
 } from '../number-utils';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CounterStoreService {
   logs = signal<string[]>([]);
   count = signal<number>(0);

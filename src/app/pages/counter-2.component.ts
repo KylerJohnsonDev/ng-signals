@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { CounterStoreService } from '../stores/counter-store.service';
+import { CounterStoreService } from '../global-stores/counter-store.service';
 
 interface CounterState {
   count: number;
