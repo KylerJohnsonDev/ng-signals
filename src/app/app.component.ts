@@ -16,6 +16,11 @@ import { RouterModule } from '@angular/router';
             >Counter</a
           >
         </li>
+        <li>
+          <a [routerLink]="['/counter-2']" routerLinkActive="router-link-active"
+            >Counter 2</a
+          >
+        </li>
       </ul>
     </nav>
     <router-outlet></router-outlet>
