@@ -6,7 +6,20 @@ import { RouterModule } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  template: ` <router-outlet></router-outlet> `,
+  template: `
+    <nav class="flex p-2 bg-red-500 items-center text-white">
+      <a class="text-xl" routerLink="/">Angular Signals Playground</a>
+      <div class="grow"></div>
+      <ul>
+        <li>
+          <a [routerLink]="['/counter']" routerLinkActive="router-link-active"
+            >Counter</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <router-outlet></router-outlet>
+  `,
   styles: [],
 })
 export class AppComponent {}
