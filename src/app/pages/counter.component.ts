@@ -48,7 +48,7 @@ interface CounterState {
         <p>{{ primeOrComposite() }}</p>
       </section>
 
-      <section class="border border-black rounded-md h-36 overflow-auto p-4">
+      <section class="border border-white rounded-md h-36 overflow-auto p-4">
         <div *ngIf="logs().length > 0; else nologs">
           <p *ngFor="let log of logs()">{{ log }}</p>
         </div>

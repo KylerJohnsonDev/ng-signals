@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <nav class="flex p-2 bg-red-500 items-center text-white">
+    <nav class="flex p-2 bg-blue-600 items-center text-white">
       <a class="text-xl" routerLink="/">Angular Signals Playground</a>
       <div class="grow"></div>
       <ul class="flex">

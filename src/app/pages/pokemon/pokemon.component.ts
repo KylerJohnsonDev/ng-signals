@@ -38,25 +38,22 @@ import { PokemonStoreService } from './pokemon-store.service';
       <input
         class="app-input"
         type="number"
-        [(ngModel)]="formNumber"
-        (ngModelChange)="formChange($event)"
+        [value]="pokemonStore.pokemonNumber()"
+        (input)="onInput($event)"
       />
     </section>
   `,
 })
 export class PokemonComponent {
-  formNumber!: number;
-  constructor(public pokemonStore: PokemonStoreService) {
-    this.formNumber = pokemonStore.pokemonNumber();
-  }
+  constructor(public pokemonStore: PokemonStoreService) {}
 
-  formChange(inputValue: any): void {
-    const num = Number(inputValue);
+  onInput(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const num = Number(input.value);
     this.pokemonStore.setPokemonNumber(num);
   }
 
   reset(): void {
     this.pokemonStore.setPokemonNumber(1);
-    this.formNumber = 1;
   }
 }
