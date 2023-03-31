@@ -34,8 +34,26 @@ import { PokemonRxJSStore } from './pokemon-rxjs-store.service';
         (click)="pokemonStore.setPokemonNumber(1)"
       ></app-button>
     </section>
+    <section
+      class="w-72 gap-2 flex flex-row m-4 items-baseline"
+      *ngIf="pokemonStore.pokemonNumber$ | async as pokemonNumber"
+    >
+      <span class="w-16 text-lg">Go to:</span>
+      <input
+        class="app-input"
+        type="number"
+        [value]="pokemonNumber"
+        (input)="onInput($event)"
+      />
+    </section>
   `,
 })
 export class Pokemon2Component {
   constructor(public pokemonStore: PokemonRxJSStore) {}
+
+  onInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const num = Number(input.value);
+    this.pokemonStore.setPokemonNumber(num);
+  }
 }

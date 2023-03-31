@@ -31,7 +31,10 @@ import { PokemonStoreService } from './pokemon-store.service';
         "
       >
       </app-button>
-      <app-button text="Reset" (click)="reset()"></app-button>
+      <app-button
+        text="Reset"
+        (click)="pokemonStore.setPokemonNumber(1)"
+      ></app-button>
     </section>
     <section class="w-72 gap-2 flex flex-row m-4 items-baseline">
       <span class="w-16 text-lg">Go to:</span>
@@ -51,9 +54,5 @@ export class PokemonComponent {
     const input = event.target as HTMLInputElement;
     const num = Number(input.value);
     this.pokemonStore.setPokemonNumber(num);
-  }
-
-  reset(): void {
-    this.pokemonStore.setPokemonNumber(1);
   }
 }

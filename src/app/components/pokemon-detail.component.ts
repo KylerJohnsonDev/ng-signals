@@ -27,7 +27,7 @@ import { PokemonTypeLookupPipe } from '../pokemon-type-lookup.pipe';
         Type:
         <ng-container *ngFor="let item of pokemon?.types">
           <span
-            class="px-3 py-1 rounded-2xl text-white ml-2"
+            class="px-3 py-1 rounded-2xl text-white ml-2 font-bold"
             *ngIf="item | pokemonTypeLookup as type"
             [ngStyle]="{ 'background-color': type.color }"
             >{{ type.type }}</span
